@@ -1,0 +1,113 @@
+---
+output: pdf_document
+header-includes:
+  \usepackage{longtable}\setlength{\LTleft}{0em}
+fontsize: 8pt
+
+---
+
+
+```{r setup, include=FALSE, echo=F, message=F, warning=F}
+# knitr::opts_chunk$set(echo = FALSE,message=F, warning=F)
+# library(knitr)
+# library(dplyr)
+# library(stargazer)
+```
+
+**9. Supplementary Material**
+
+Table S1. Burned area within the study area.
+
+| Fire frequency | Area (Km$^2$) | Percent of total area|
+|:----|--:|--:|
+|0|8609 | 68|
+|1| 2884|23|
+|2| 926|7|
+|3+| 286|2|
+
+\clearpage
+\newpage
+
+<!-- # ```{r} -->
+<!-- # pools<- list() -->
+<!-- # for(i in 0:3){ -->
+<!-- # sac_y %>% filter(FF == i) %>% -->
+<!-- #     dplyr::select(-FF,-plot) %>% -->
+<!-- #     specpool() -> pools[[i+1]] -->
+<!-- # } -->
+<!-- # spec_tab <- do.call("rbind", pools) -->
+<!-- # rownames(spec_tab) <- c("Unburned", "1 Fire", "2 Fires", "3 Fires") -->
+<!-- # stargazer(spec_tab,summary = F) # and then I manually changed the table to -->
+<!-- # # pipe style -->
+
+<!-- ``` -->
+
+
+
+Table S2: Plant species encountered. *Astragalus* and *Lupinus* had two and three species, respectively, that were not able to be identified.
+
+|Species                               |Life Form           |Origin     |
+|:-------------------------------------|:-------------------|:----------|
+|*Achillea millefolium* L.                 |Perennial Forb      |Native     |
+|*Agropyron cristatum* (L.) Gaertn.          |Perennial Graminoid |Introduced |
+|*Allium* L.                            |Perennial Forb      |Native     |
+|cf. *Allium* L.                        |Perennial Forb      |Native     |
+|*Alyssum desertorum* Stapf                    |Annual Forb         |Introduced |
+|*Amsinckia intermedia* Fisch. & C.A. Mey.    |Annual Forb         |Native     |
+|*Artemisia arbuscula* Nutt.                  |Shrub               |Native     |
+|*Artemisia tridentata* Nutt. ssp. *wyomingensis* Beetle & Young |Shrub |Native     |
+|*Astragalus* L.                       |Perennial Forb      |Native     |
+|*Bassia prostrata* (L.) A.J. Scott            |Subshrub      |Introduced |
+|*Bromus tectorum* L.                      |Annual Graminoid    |Introduced |
+|*Calochortus bruneaunis* A. Nelson & J.F. Macbr.  |Perennial Forb      |Native     |
+|*Cardaria draba* (L.) Desv.                   |Perennial Forb      |Introduced |
+|*Ceratocephala testiculata*  (Crantz) Roth           |Annual Forb         |Introduced |
+|*Chrysothamnus viscidiflorus* (Hook.) Nutt.          |Shrub               |Native     |
+|*Collinsia parviflora* Lindl.         |Annual Forb         |Native     |
+|*Convulvulus* L.                       |Perennial Forb      |Introduced |
+|*Crepis occidentalis* Nutt.                  |Perennial Forb      |Native     |
+|*Cryptantha* Lehm. ex G. Don                         |Annual Forb         |Native     |
+|*Cymopteris* Raf.                        |Perennial Forb      |Native     |
+|*Delphinium glaucum* S. Watson               |Perennial Forb      |Native     |
+|*Descurainia pinnata* (Walter) Britton        |Annual Forb         |Native     |
+|*Descurainia sophia* (L.) Webb ex Prantl     |Annual Forb         |Introduced |
+|*Elymus cinereus* (Scribn. & Merr.) Á. Löve |Perennial Graminoid |Native     |
+|*Ericameria nauseosa* (Pall. ex Pursh) G.L. Nesom & Baird  |Shrub  |Native     |
+|*Ericameria teretifolia* (Durand & Hilg.) Jeps. |Shrub               |Native     |
+|*Eriogonum* cf. *umbellatum* Torr.      |Perennial Forb      |Native     |
+|*Erodium cicutarium* (L.) L'Hér. ex Aiton |Annual Forb         |Introduced |
+|*Gayophytum ramosissimum* Torr. & A. Gray |Annual Forb         |Native     |
+|*Grayia spinosa* (Hook.) Moq.           |Shrub               |Native     |
+|*Iva axillaris* Pursh            |Perennial Forb      |Native     |
+|*Lagophylla ramosissima* Nutt.              |Annual Forb         |Native     |
+|*Layia glandulosa* (Hook.) Hook. & Arn.  |Annual Forb         |Native     |
+|*Lepidium perfoliatum* L.                 |Annual Forb         |Introduced |
+|*Leymus elymoides* (Raf.) Swezey    |Perennial Graminoid |Native     |
+|*Lupinus argenteus* Pursh              |Perennial Forb      |Native     |
+|*Lupinus* L.                         |Perennial Forb      |Native     |
+|*Microsteris gracilis* (Hook.) Greene  |Annual Forb         |Native     |
+|*Pascopyrum smithii* (Rydb.) Á. Löve        |Perennial Graminoid |Native     |
+|*Perideridia bolanderi* (A. Gray) A. Nelson & J.F. Macbr. |Perennial Forb  |Native |
+|*Pectocarya* DC. ex Meisn.                       |Annual Forb         |Native     |
+|*Poa secunda* J. Presl                      |Perennial Graminoid |Native     |
+|*Phlox diffusa* Benth.             |Perennial Forb      |Native     |
+|*Senecio* L.                           |Perennial Forb      |Native     |
+|*Sisymbrium altissimum* L.               |Annual Forb         |Introduced |
+|*Stephanomeria pauciflora* (Torr.) A. Nelson |Perennial Forb      |Native     |
+|cf. *Symphyotrichum* Nees                             |Perennial Forb      |Native     |
+|*Taeniatherum caput-medusae* (L.) Nevski  |Annual Graminoid    |Introduced |
+|*Tetradymia glabrata* Torr. & A. Gray        |Shrub               |Native     |
+|*Tetradymia spinosa* Hook. & Arn. |Shrub               |Native     |
+|*Zigadenus* Michx.                         |Perennial Forb      |Native     |
+
+\clearpage
+\newpage
+
+Table S3: Observed richness and extrapolated richness by fire frequency, with small sample correction. Chao, 1$^s$$^t$ and 2$^n$$^d$ order jackknife, and Bootstrap are methods of estimating unobserved species per pool.
+
+|Fire Frequency |Observed Richness  | Chao $\pm$ se | 1$^s$$^t$ Order Jackknife $\pm$ se | 2$^n$$^d$ Order Jackknife | Bootstrap $\pm$ se | n |
+|:--------|---------|----------|--------     |--------|---------------|---|
+|Unburned |29       |200 $\pm$ 188  |  46 $\pm$ 8      | 59     | 35 $\pm$ 4         |7|  
+|1 Fire   |24       |  40 $\pm$ 12  |  36 $\pm$ 6      | 43     | 29 $\pm$ 4         |7| 
+|2 Fires  |19       |  36 $\pm$ 15  | 28 $\pm$ 4       | 34     | 23 $\pm$ 2         |7| 
+|3 Fires  |13       |  18 $\pm$ 6   |  17 $\pm$ 3      | 19     | 14 $\pm$ 2         | 7| 

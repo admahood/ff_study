@@ -1,0 +1,199 @@
+---
+output: pdf_document
+header-includes:
+  \usepackage{longtable}\setlength{\LTleft}{0em}
+fontsize: 8pt
+
+---
+
+```{r setup, include=FALSE, echo=F, message=F, warning=F}
+knitr::opts_chunk$set(echo = FALSE,message=F, warning=F)
+library(knitr)
+library(dplyr)
+library(stargazer)
+```
+
+**7. Tables**
+
+Table 1. Variables Used in PERMANOVA Models.
+
+|Variable |Abbreviation|                      Source  |
+|:----------------------------|---:|--------:|
+|**Fire**                      ||                      |
+|Time Since Fire |TSF               |     MTBS|
+|Fire Frequency |FF               |         MTBS|
+||||
+|**Climate**                   | |                     |
+|Maximum Vapor Pressure Deficit|  |                    |
+|*Year of Fire*  |vpdmax_during               |  GRIDMET|
+|*Year before Fire* |vpdmax_before           |  GRIDMET|
+|*Year after Fire*  |vpdmax_after           |  GRIDMET|
+|Maximum Temperature  |         |                      |
+|*Year of Fire*  |tmax_during              |  GRIDMET|
+|*Year before Fire*  |tmax_pre          |  GRIDMET|
+|*Year after Fire*  |tmax_after           |  GRIDMET|
+|Precipitation                 |    |                  |
+|*Nov - May; 2 Years Before Fire* |ppt_2pre |  GRIDMET|
+|*Nov - May; 1 Year Before Fire* |ppt_1pre  |  GRIDMET|
+|*Nov - May; After Fire*  |ppt_post        |  GRIDMET|
+|                              |    |                  |
+|**Other**|||
+|Folded Aspect                | |              Field Measurements|
+|Slope              | |              Field Measurements|
+|Elevation                     ||              USGS    |
+|Animal Unit Months per Hectare |AUM_ha  | BLM     |
+
+\clearpage
+\newpage
+
+<!-- # ```{r, results='asis'} -->
+<!-- # commented out due to one asinine glitch in the table generation that I could -->
+<!-- # not figure out. Something caused by Rmarkdown. everything works perfect except the -->
+<!-- # the table, which you can generate by running it in the console, instead of in -->
+<!-- # the code chunk. the second to last line in this chunk is the offending line. -->
+<!-- # Also I manually changed the variable names in the copy and pasted stargazer -->
+<!-- # output below -->
+
+<!-- # library(vegan) -->
+<!-- # library(nlme) -->
+<!-- # library(lmerTest) -->
+<!-- # library(r2glmm) -->
+<!-- # ##### -->
+<!-- #  -->
+<!-- # SPs <- read.csv("Data/FF_All_plots.csv") %>% -->
+<!-- #   dplyr::select(-SS1, -SS2) %>% -->
+<!-- #   mutate(Plot = substr(Image,1,9)) %>% -->
+<!-- #   mutate(UNK9 = UNK2 + UNK9) %>% # UNK2 = UNK9! -->
+<!-- #   mutate(LEPE2 = LEPE2 + LEPE2.1) %>% -->
+<!-- #   dplyr::select(-UNK2, -Image, -LEPE2.1) %>% -->
+<!-- #   dplyr::rename(CYMOP2 = CYMO, -->
+<!-- #                 BAPR5 = BAPR, -->
+<!-- #                 ERNA10 = ERNA, -->
+<!-- #                 CRYPT = CRYPTANTHASP, -->
+<!-- #                 ELCA13 = ELCA, -->
+<!-- #                 ACMI2 = ACMI) %>% -->
+<!-- #   group_by(Plot) %>% -->
+<!-- #   summarise_all(mean, na.rm=TRUE) %>% -->
+<!-- #   mutate(Seedling_presence = ifelse(Seedlings > 0 ,1,0))%>% -->
+<!-- #   dplyr::select(-ssMean, -Seedlings,-Seedling_presence, -LITTER, -BARE, -SHADOW, -->
+<!-- #                 -UNCLEAR, -WOOD, -SCAT, -DUNG, -ROCK,-CRUST) %>% -->
+<!-- #   tibble::column_to_rownames("Plot") -->
+<!-- #  -->
+<!-- # n_sp <- read.csv("Data/FF_plot_level.csv") %>% -->
+<!-- #   dplyr::rename(plot = X)%>% -->
+<!-- #   mutate(FF = as.factor(FF), -->
+<!-- #          block = substr(plot, 1, 3), -->
+<!-- #          block = as.factor(ifelse(block == "F03", "F05", block))) %>% -->
+<!-- #   dplyr::select(plot, sum_spp,FF, block,Elevation) -->
+<!-- #  -->
+<!-- # lspn <- log(specnumber(SPs)) %>% -->
+<!-- #   as.data.frame() %>% -->
+<!-- #   tibble::rownames_to_column("plot") %>% -->
+<!-- #   dplyr::rename(lspn = ".") -->
+<!-- #  -->
+<!-- # shannon <- diversity(SPs, index = "shannon") %>% -->
+<!-- #   as.data.frame() %>% -->
+<!-- #   tibble::rownames_to_column("plot") %>% -->
+<!-- #   dplyr::rename(shannon_weaver = ".") -->
+<!-- #  -->
+<!-- # simpson <- diversity(SPs, index = "simpson") %>% -->
+<!-- #   as.data.frame() %>% -->
+<!-- #   tibble::rownames_to_column("plot") %>% -->
+<!-- #   dplyr::rename(simpson = ".") -->
+<!-- #  -->
+<!-- # invsimpson <- diversity(SPs, index = "invsimpson") %>% -->
+<!-- #   as.data.frame() %>% -->
+<!-- #   tibble::rownames_to_column("plot") %>% -->
+<!-- #   dplyr::rename(inverse_simpson = ".") -->
+<!-- #  -->
+<!-- # adiv <- left_join(shannon, simpson)%>% -->
+<!-- #   left_join(invsimpson)%>% -->
+<!-- #   left_join(lspn) %>% -->
+<!-- #   mutate(pielou_evenness = shannon_weaver/lspn) %>% -->
+<!-- #   dplyr::select(-lspn) -->
+<!-- #  -->
+<!-- # comm <- decostand(SPs, method = "total") -->
+<!-- #  -->
+<!-- # bdmod_sim <- betadisper(betadiver(comm, 1),n_sp$FF) -->
+<!-- # s <- data.frame(bdmod_sim$distances, bdmod_sim$group) %>% -->
+<!-- #   dplyr::select(beta_diversity = bdmod_sim.distances) %>% -->
+<!-- #   mutate(plot = rownames(.)) -->
+<!-- #  -->
+<!-- # brte <- tibble::rownames_to_column(SPs,"plot")%>% -->
+<!-- #   dplyr::select(plot, Cheatgrass_cover = BRTE) %>% -->
+<!-- #   left_join(adiv) %>% -->
+<!-- #   left_join(n_sp) %>% -->
+<!-- #   left_join(s) %>% -->
+<!-- #   dplyr::select(-simpson,-inverse_simpson) -->
+<!-- #  -->
+<!-- # # lmms, generating R2 -->
+<!-- #  -->
+<!-- # mods<-list() -->
+<!-- # mods$sw <- lme(shannon_weaver ~ Cheatgrass_cover + Elevation, random = ~1|block, data = brte) -->
+<!-- # mods$pe <- lme(pielou_evenness ~ Cheatgrass_cover + Elevation, random = ~1|block, data = brte) -->
+<!-- # mods$ns <- lme(sum_spp ~ Cheatgrass_cover + Elevation, random = ~1|block, data = brte) -->
+<!-- # mods$bd <- lme(beta_diversity ~ Cheatgrass_cover+Elevation, random = ~1|block, data = brte) -->
+<!-- #  -->
+<!-- # pr2brte <- c() -->
+<!-- # for(i in 1:4){ -->
+<!-- #   x<- r2beta(mods[[i]]) -->
+<!-- #   pr2brte[i] <- round(x[x$Effect=="BRTE", ]$Rsq,2) -->
+<!-- # } -->
+<!-- # pr2brte <- c("partial R2 BRTE", pr2brte) -->
+
+<!-- # stargazer(mods, title = "Results of linear mixed models testing the relationship between diversity indexes and cheatgrass abundance, while accounting for elevation. Study block was the random effect.", -->
+<!-- #           type = "latex", -->
+<!-- #           omit.stat = c('aic','bic', 'll'), -->
+<!-- #           add.lines=list(pr2brte), #somehow adding this line doesn't work in rmarkdown but works in the console fml -->
+<!-- #           header=F) -->
+
+<!-- # ``` -->
+
+\begin{table}[!htbp] \centering 
+  \caption{Results of linear mixed models testing the relationship between diversity indexes and cheatgrass abundance, while accounting for elevation. Study block was the random effect. Partial coefficient of determination was calculated from Jeager et al. (2016)} 
+  \label{} 
+\begin{tabular}{@{\extracolsep{5pt}}lcccc} 
+\\[-1.8ex]\hline 
+\hline \\[-1.8ex] 
+ & \multicolumn{4}{c}{\textit{Dependent variable:}} \\ 
+\cline{2-5} 
+\\[-1.8ex] & Shannon-Weaver & Pielou Evenness & Number of Species & Beta Diversity \\ 
+\hline \\[-1.8ex] 
+ Cheatgrass Cover & $-$0.017$^{***}$ & $-$0.008$^{***}$ & $-$0.071$^{***}$ & 0.002 \\ 
+  & (0.003) & (0.002) & (0.027) & (0.001) \\ 
+  & & & & \\ 
+ Elevation & 0.189$^{***}$ & 0.046 & 1.700$^{***}$ & 0.065$^{***}$ \\ 
+  & (0.062) & (0.029) & (0.642) & (0.021) \\ 
+  & & & & \\ 
+ Constant & 1.214$^{***}$ & 0.652$^{***}$ & 8.538$^{***}$ & 0.288$^{***}$ \\ 
+  & (0.103) & (0.052) & (1.121) & (0.037) \\ 
+  & & & & \\ 
+\hline \\[-1.8ex] 
+partial R\textsuperscript{2}, Cheatgrass Cover & 0.65 & 0.51 & 0.24 & 0.08 \\
+\hline 
+\hline \\[-1.8ex] 
+\textit{Note:}  & \multicolumn{4}{r}{$^{*}$p$<$0.1; $^{**}$p$<$0.05; $^{***}$p$<$0.01} \\ 
+\end{tabular} 
+\end{table} 
+
+\clearpage
+\newpage
+
+Table 3. PERMANOVA results for fire history and environmental factors influencing post-fire **community composition**.
+
+```{r}
+source("tables.R")
+options(knitr.kable.NA = '')
+
+kable(admod_hc$aov.tab,digits = 4)
+```
+
+\clearpage
+\newpage
+
+Table 4. PERMANOVA results for fire history and environmental factors influencing post-fire **beta diversity** (Whittaker's index).
+
+```{r}
+kable(admod_bd_w$aov.tab, digits =4)
+```
+

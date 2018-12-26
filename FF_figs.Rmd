@@ -1,0 +1,99 @@
+---
+output:
+  pdf_document: default
+  word_document: default
+---
+
+**8. Figures**
+
+Figure 1.  Plot photographs taken from study block 4 in King's River Valley, west of Orovada, Nevada. We show these to illustrate the apparent similarity between plots with different fire frequencies, and why we thought species composition would not change dramatically between one and 3 fires, while also hypothesizing that diversity would decline.
+
+Figure 2. The extent of the study area is shown in (A). The striping from the scanner line correction failure from Landsat 7 is clearly visible and those areas were avoided in our sampling. Darker shading indicates higher fire frequency. The potential range is 0 to 5 fires, although areas with more than 3 fires were extremely rare (0.2% of total area). We sampled frequencies 0 to 3. The placement of the study area within the Central Basin and Range ecoregion is shown in (B). A detail of one of the study blocks is represented in (C).
+
+Figure 3. Ordination plot of non-metric multidimensional scaling conducted on plant community data using Kulcynski hierarchical clustering. Ellipses represent the 95% confidence interval around plots grouped by whether or not they had burned. Species significantly (p < 0.05) correlated with the ordination are shown, with arrows scaled by the strength of the correlation. Species are listed by their USDA plant codes. ARTRW8 is *Artemisia tridentata* ssp. *wyomingensis*; POSE is *Poa secunda*; ELEL5 is *Elymus elymoides*;  SIAL2 is *Sisymbrium altissimum*; BRTE is *Bromus tectorum*; CETE5 is *Ceratocephalum testiculatum*; ERCI6 is *Erodium cicutarium*. 
+
+Figure 4. Alpha Diversity (Shannon's index of proportional abundance, Pielou's index of evenness, and the number of species per plot), Beta Diversity (Whittaker's index - the values are a unitless index of dissimiliarity), and native and exotic plant cover, all grouped by fire frequency. Shading indicates significantly different groups as determined by Tukey's test.
+
+Figure 5. Percent cover of life form groups, grouped by fire frequency. Of the two most dominant life form groups, exotic annual grass is >99% cheatgrass, and native shrub is >99% Wyoming big sagebrush.
+
+Figure 6. Species accumulation curves for fire frequency. Vertical lines represent the conditioned standard deviation around species richness, and are jittered for visibility.
+
+Figure 7. Scatter plots for diversity indexes as predicted by *Bromus tectorum* cover and elevation. Lines are predictions from linear mixed effects models with study block as a random effect. The X axis is cheatgrass cover, and the Y axis is the value of the index with the effect of elevation removed (Hohenstein 2018).
+
+\newpage
+
+\begin{figure}
+ 
+  \begin{center}
+    \includegraphics{figures/fire_pics.png}
+    \caption{}
+  \end{center}
+\end{figure}
+\clearpage
+
+\newpage
+
+\begin{figure}
+ 
+  \begin{center}
+    \includegraphics{figures/map.png}
+    \caption{}
+  \end{center}
+\end{figure}
+\clearpage
+
+\newpage
+
+
+\begin{figure}
+ 
+  \begin{center}
+    \includegraphics{figures/nmds.png}
+    \caption{}
+  \end{center}
+\end{figure}
+
+\clearpage
+
+\newpage
+
+\begin{figure}
+ 
+  \begin{center}
+    \includegraphics{figures/tukey_plots.png}
+    \caption{}
+  \end{center}
+\end{figure}
+\clearpage
+
+\newpage
+
+\begin{figure}
+ 
+  \begin{center}
+    \includegraphics{figures/origin_lf.png}
+    \caption{}
+  \end{center}
+\end{figure}
+
+\clearpage
+\newpage
+
+\begin{figure}
+ 
+  \begin{center}
+    \includegraphics{figures/sac_plot.png}
+    \caption{}
+  \end{center}
+\end{figure}
+
+\clearpage
+\newpage
+
+\begin{figure}
+ 
+  \begin{center}
+    \includegraphics{figures/brte_div.png}
+    \caption{}
+  \end{center}
+\end{figure}
