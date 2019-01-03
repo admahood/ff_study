@@ -14,7 +14,7 @@ iini <-function(x){
   #stands for install if not installed
   if (!x %in% rownames(installed.packages())) install.packages(x)
 }
-lapply(libs,iini)
+lapply(libs, iini)
 lapply(libs, library, character.only = TRUE, verbose = FALSE)
 
 set.seed(43534)
@@ -191,10 +191,11 @@ ggdraw() +
   draw_plot(zoom, 0.7, 0.0375, 0.28, 0.4) +
   draw_plot_label(label = c("A", "B", "C"), x = c(0.615,0.92,0.92), y = c(0.95, 0.95, 0.42)) +
   draw_plot_label(label = c("Winnemucca", "Inset (C)", "Study Area (A)"), x = c(0.125,0.12, 0.73), y = c(0.3,0.57,0.79), size = 8) +
-  draw_plot_label(label = "NV", x = 0.8, y = 0.7, size = 10, col = "grey50") +
-  ggsave("figures/map.png", 
-         limitsize = FALSE,
-         width = 6, height = 4)
+  draw_plot_label(label = "NV", x = 0.8, y = 0.7, size = 10, col = "grey50")
+
+ggsave("figures/map.png", 
+       limitsize = FALSE,
+       width = 6, height = 4)
 
 # species accumulation ---------------------------------------------------------
 # many thanks to:
@@ -656,7 +657,6 @@ p0 <- ggplot(brte_ga, aes(x=BRTE, y=value, group=block)) +
   theme(panel.border = element_rect(fill = NA, colour = "black"))+
   theme(panel.background = element_rect(fill='white', colour='black')) + 
   ylab("Elevation-Adjusted Values") +
-  xlab("Cheatgrass Cover") 
-  
-ggsave("figures/brte_div.png", limitsize = FALSE)
+  xlab("Cheatgrass Cover") +
+  ggsave("figures/brte_div.png",width=6, height = 5, limitsize = FALSE)
 
