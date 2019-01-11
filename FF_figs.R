@@ -193,7 +193,7 @@ ggdraw() +
   draw_plot_label(label = c("Winnemucca", "Inset (C)", "Study Area (A)"), x = c(0.125,0.12, 0.73), y = c(0.3,0.57,0.79), size = 8) +
   draw_plot_label(label = "NV", x = 0.8, y = 0.7, size = 10, col = "grey50")
 
-ggsave("figures/map.png", 
+ggsave("figures/figure_2_map.pdf", 
        limitsize = FALSE,
        width = 6, height = 4)
 
@@ -246,7 +246,7 @@ ggplot(sact, aes(x=sites, y=richness, colour = fire_frequency)) +
   geom_line(aes(color = fire_frequency), position=pd) +
   scale_color_discrete(name="Fire\nFrequency")
 
-ggsave("figures/sac_plot.png",
+ggsave("figures/figure_6_sac_plot.pdf",
        limitsize = FALSE,
        width = 7,
        height = 4)
@@ -345,7 +345,7 @@ ggplot(data=scores) +
         legend.background = element_rect(fill = 'transparent'))
 
 
-ggsave("figures/nmds.png", limitsize = FALSE, width = 7, height = 6)
+ggsave("figures/figure_3_nmds.pdf", limitsize = FALSE, width = 7, height = 6)
 
 # tukey plots ------------------------------------------------------------------
 SPs <- read.csv("Data/FF_All_plots.csv") %>%
@@ -475,7 +475,7 @@ ggplot(evn, aes(x = `Fire Frequency`, y = Value, fill = TukeyHSD)) +
   theme(panel.border = element_rect(fill = NA, colour = "black"))+
   ylab(NULL)
 
-ggsave("figures/tukey_plots.png", limitsize = FALSE, width = 7, height = 5)
+ggsave("figures/figure_4_tukey_plots.pdf", limitsize = FALSE, width = 7, height = 5)
 # functional group figure ------------------------------------------------------
 
 nbp = read.csv("Data/FF_plot_level.csv") %>%
@@ -506,7 +506,7 @@ ggplot(data = nbp, aes(x = `Fire Frequency`, y = `Percent Cover`,
   theme(panel.background = element_rect(fill='white', colour='black')) +      
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
 
-ggsave("figures/origin_lf.png", limitsize = FALSE,
+ggsave("figures/figure_5_origin_lf.pdf", limitsize = FALSE,
        width = 7, height = 6)
 
 
@@ -648,15 +648,15 @@ brte_ga <- dplyr::select(brte, plot, starts_with("predicted")) %>%
 
 p0 <- ggplot(brte_ga, aes(x=BRTE, y=value, group=block)) +
   theme_bw() +
-  geom_line(aes(y=fit, color=block), size=0.8, alpha = 0.75) +
+  geom_line(aes(y=fit, color=block), size=0.8, alpha = 0.75, show.legend=F) +
   #geom_smooth(method = "lm", color = "grey40",se=F) +
   geom_point(aes(shape=block,color=block), size=1, stroke =1.5) +
   facet_wrap(~key, scales = "free", dir = "h", nrow = 2) +
-  scale_shape_manual(values = c(0:7), name = "Fire\nFrequency") +
+  scale_shape_manual(values = c(0:7), name = "Block") +
   scale_color_brewer(palette = "Dark2",name = "Block") +
   theme(panel.border = element_rect(fill = NA, colour = "black"))+
   theme(panel.background = element_rect(fill='white', colour='black')) + 
   ylab("Elevation-Adjusted Values") +
   xlab("Cheatgrass Cover") +
-  ggsave("figures/brte_div.png",width=6, height = 5, limitsize = FALSE)
+  ggsave("figures/figure_7_brte_div.pdf",width=6, height = 5, limitsize = FALSE)
 
