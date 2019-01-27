@@ -1,0 +1,574 @@
+\documentclass[8pt,]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{longtable,booktabs}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+\usepackage{longtable}\setlength{\LTleft}{0em}
+
+\begin{document}
+
+Supplementary Material
+
+Table S1. Burned area within the study area.
+
+\begin{longtable}[]{@{}lrr@{}}
+\toprule
+Fire frequency & Area (Km\(^2\)) & Percent of total area\tabularnewline
+\midrule
+\endhead
+0 & 8609 & 68\tabularnewline
+1 & 2884 & 23\tabularnewline
+2 & 926 & 7\tabularnewline
+3+ & 286 & 2\tabularnewline
+\bottomrule
+\end{longtable}
+
+\clearpage
+\newpage
+
+Table S2: Plant species encountered. \emph{Astragalus} and
+\emph{Lupinus} had two and three species, respectively, that were not
+able to be identified.
+
+\begin{longtable}[]{@{}lll@{}}
+\toprule
+\begin{minipage}[b]{0.49\columnwidth}\raggedright\strut
+Species\strut
+\end{minipage} & \begin{minipage}[b]{0.27\columnwidth}\raggedright\strut
+Life Form\strut
+\end{minipage} & \begin{minipage}[b]{0.15\columnwidth}\raggedright\strut
+Origin\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Achillea millefolium} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Agropyron cristatum} (L.) Gaertn.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Graminoid\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Allium} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+cf. \emph{Allium} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Alyssum desertorum} Stapf\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Amsinckia intermedia} Fisch. \& C.A. Mey.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Artemisia arbuscula} Nutt.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Artemisia tridentata} Nutt. ssp. \emph{wyomingensis} Beetle \&
+Young\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Astragalus} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Bassia prostrata} (L.) A.J. Scott\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Subshrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Bromus tectorum} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Graminoid\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Calochortus bruneaunis} A. Nelson \& J.F. Macbr.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Cardaria draba} (L.) Desv.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Ceratocephala testiculata} (Crantz) Roth\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Chrysothamnus viscidiflorus} (Hook.) Nutt.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Collinsia parviflora} Lindl.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Convulvulus} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Crepis occidentalis} Nutt.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Cryptantha} Lehm. ex G. Don\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Cymopteris} Raf.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Delphinium glaucum} S. Watson\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Descurainia pinnata} (Walter) Britton\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Descurainia sophia} (L.) Webb ex Prantl\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Elymus cinereus} (Scribn. \& Merr.) Á. Löve\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Graminoid\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Ericameria nauseosa} (Pall. ex Pursh) G.L. Nesom \& Baird\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Ericameria teretifolia} (Durand \& Hilg.) Jeps.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Eriogonum} cf. \emph{umbellatum} Torr.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Erodium cicutarium} (L.) L'Hér. ex Aiton\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Gayophytum ramosissimum} Torr. \& A. Gray\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Grayia spinosa} (Hook.) Moq.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Iva axillaris} Pursh\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Lagophylla ramosissima} Nutt.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Layia glandulosa} (Hook.) Hook. \& Arn.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Lepidium perfoliatum} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Leymus elymoides} (Raf.) Swezey\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Graminoid\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Lupinus argenteus} Pursh\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Lupinus} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Microsteris gracilis} (Hook.) Greene\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Pascopyrum smithii} (Rydb.) Á. Löve\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Graminoid\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Perideridia bolanderi} (A. Gray) A. Nelson \& J.F. Macbr.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Pectocarya} DC. ex Meisn.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Poa secunda} J. Presl\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Graminoid\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Phlox diffusa} Benth.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Senecio} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Sisymbrium altissimum} L.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Stephanomeria pauciflora} (Torr.) A. Nelson\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+cf. \emph{Symphyotrichum} Nees\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Taeniatherum caput-medusae} (L.) Nevski\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Annual Graminoid\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Introduced\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Tetradymia glabrata} Torr. \& A. Gray\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Tetradymia spinosa} Hook. \& Arn.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Shrub\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.49\columnwidth}\raggedright\strut
+\emph{Zigadenus} Michx.\strut
+\end{minipage} & \begin{minipage}[t]{0.27\columnwidth}\raggedright\strut
+Perennial Forb\strut
+\end{minipage} & \begin{minipage}[t]{0.15\columnwidth}\raggedright\strut
+Native\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+\clearpage
+\newpage
+
+Table S3: Observed richness and extrapolated richness by fire frequency,
+with small sample correction. Chao, 1\(^s\)\(^t\) and 2\(^n\)\(^d\)
+order jackknife, and Bootstrap are methods of estimating unobserved
+species per pool.
+
+\begin{longtable}[]{@{}lllllll@{}}
+\toprule
+\begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+Fire Frequency\strut
+\end{minipage} & \begin{minipage}[b]{0.11\columnwidth}\raggedright\strut
+Observed Richness\strut
+\end{minipage} & \begin{minipage}[b]{0.12\columnwidth}\raggedright\strut
+Chao \(\pm\) se\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
+1\(^s\)\(^t\) Order Jackknife \(\pm\) se\strut
+\end{minipage} & \begin{minipage}[b]{0.10\columnwidth}\raggedright\strut
+2\(^n\)\(^d\) Order Jackknife\strut
+\end{minipage} & \begin{minipage}[b]{0.18\columnwidth}\raggedright\strut
+Bootstrap \(\pm\) se\strut
+\end{minipage} & \begin{minipage}[b]{0.04\columnwidth}\raggedright\strut
+n\strut
+\end{minipage}\tabularnewline
+\midrule
+\endhead
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+Unburned\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+29\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+200 \(\pm\) 188\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+46 \(\pm\) 8\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+59\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+35 \(\pm\) 4\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+7\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+1 Fire\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+24\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+40 \(\pm\) 12\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+36 \(\pm\) 6\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+43\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+29 \(\pm\) 4\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+7\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+2 Fires\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+19\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+36 \(\pm\) 15\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+28 \(\pm\) 4\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+34\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+23 \(\pm\) 2\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+7\strut
+\end{minipage}\tabularnewline
+\begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+3 Fires\strut
+\end{minipage} & \begin{minipage}[t]{0.11\columnwidth}\raggedright\strut
+13\strut
+\end{minipage} & \begin{minipage}[t]{0.12\columnwidth}\raggedright\strut
+18 \(\pm\) 6\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+17 \(\pm\) 3\strut
+\end{minipage} & \begin{minipage}[t]{0.10\columnwidth}\raggedright\strut
+19\strut
+\end{minipage} & \begin{minipage}[t]{0.18\columnwidth}\raggedright\strut
+14 \(\pm\) 2\strut
+\end{minipage} & \begin{minipage}[t]{0.04\columnwidth}\raggedright\strut
+7\strut
+\end{minipage}\tabularnewline
+\bottomrule
+\end{longtable}
+
+
+\end{document}

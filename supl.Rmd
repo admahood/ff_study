@@ -14,7 +14,7 @@ fontsize: 8pt
 # library(stargazer)
 ```
 
-**9. Supplementary Material**
+Supplementary Material
 
 Table S1. Burned area within the study area.
 
