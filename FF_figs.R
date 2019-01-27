@@ -244,12 +244,16 @@ ggplot(sact, aes(x=sites, y=richness, colour = fire_frequency)) +
   geom_errorbar(aes(ymin=richness-sd, ymax=richness+sd), width =0, position = pd) +
   #geom_ribbon(aes(ymin=richness-sd, ymax=richness+sd, fill = fire_frequency),alpha = 0.2) +
   geom_line(aes(color = fire_frequency), position=pd) +
-  scale_color_discrete(name="Fire\nFrequency")
+  scale_color_discrete(name="Fire\nFrequency") +
+  xlab("Sites") +
+  ylab("Richness") +
+  theme(legend.position = c(0,1),
+        legend.justification = c(0,1))
 
 ggsave("figures/figure_6_sac_plot.pdf",
        limitsize = FALSE,
-       width = 7,
-       height = 4)
+       width = 6,
+       height = 5)
 
 # NMDS figure ------------------------------------------------------------------
 
@@ -345,7 +349,8 @@ ggplot(data=scores) +
         legend.background = element_rect(fill = 'transparent'))
 
 
-ggsave("figures/figure_3_nmds.pdf", limitsize = FALSE, width = 7, height = 6)
+ggsave("figures/figure_3_nmds.pdf", limitsize = FALSE, width = 7, height = 6,
+       dpi=600)
 
 # tukey plots ------------------------------------------------------------------
 SPs <- read.csv("Data/FF_All_plots.csv") %>%
@@ -504,10 +509,13 @@ ggplot(data = nbp, aes(x = `Fire Frequency`, y = `Percent Cover`,
                              "#E6F598", "#ABDDA4", "#66C2A5", "#3288BD")) + 
   theme_bw() +
   theme(panel.background = element_rect(fill='white', colour='black')) +      
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank())
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+        legend.position = c(1,1),
+        legend.justification = c(1,1),
+        legend.background = element_rect(fill = "transparent", color = "black")) 
 
 ggsave("figures/figure_5_origin_lf.pdf", limitsize = FALSE,
-       width = 7, height = 6)
+       width = 4, height = 7, dpi = 600)
 
 
 
