@@ -185,7 +185,7 @@ zoom <- ggplot(ffz.df, aes(easting, northing)) +
   geom_path(data = zoom_df, aes(x=x,y=y), color = "black", size = 1)# +
 # ggtitle("Block 6")
 
-ggdraw() +
+p_map<-ggdraw() +
   draw_plot(map1, 0,0,0.7,1) +
   draw_plot(loc, 0.7, 0.5, 0.3, 0.4) +
   draw_plot(zoom, 0.7, 0.0375, 0.28, 0.4) +
@@ -193,8 +193,8 @@ ggdraw() +
   draw_plot_label(label = c("Winnemucca", "Inset (C)", "Study Area (A)"), x = c(0.125,0.12, 0.73), y = c(0.3,0.57,0.79), size = 8) +
   draw_plot_label(label = "NV", x = 0.8, y = 0.7, size = 10, col = "grey50")
 
-ggsave("figures/figure_2_map.pdf", 
-       limitsize = FALSE,
+ggsave(p_map, filename="figures/figure_2_map.pdf", 
+       limitsize = FALSE,bg="white",
        width = 6, height = 4)
 
 # species accumulation ---------------------------------------------------------
@@ -240,19 +240,20 @@ sact <- do.call("rbind", sact)
 
 pd <- position_dodge(0.1)
 
-ggplot(sact, aes(x=sites, y=richness, colour = fire_frequency)) + 
+p_sac<-ggplot(sact, aes(x=sites, y=richness, colour = fire_frequency)) + 
   geom_errorbar(aes(ymin=richness-sd, ymax=richness+sd), width =0, position = pd) +
   #geom_ribbon(aes(ymin=richness-sd, ymax=richness+sd, fill = fire_frequency),alpha = 0.2) +
   geom_line(aes(color = fire_frequency), position=pd) +
   scale_color_discrete(name="Fire\nFrequency") +
+  theme_classic()+
   xlab("Sites") +
   ylab("Richness") +
-  theme(legend.position = c(0,1),
+  theme(legend.position = c(0.02,1),
         legend.justification = c(0,1))
 
-ggsave("figures/figure_6_sac_plot.pdf",
+ggsave(p_sac,filename = "figures/figure_6_sac_plot.png",
        limitsize = FALSE,
-       width = 6,
+       width = 6,bg="white",
        height = 5)
 
 # NMDS figure ------------------------------------------------------------------
@@ -333,7 +334,7 @@ sp_txt <- data.frame(species = c("BRTE", "POSE", "ARTRW8", "ELEL5", "SIAL2", "ER
                            y = c(0.07,     0.8,    -0.8,     0.15,     0.8,   -0.55)
                      )
 
-ggplot(data=scores) +
+p_nmds<- ggplot(data=scores) +
   stat_ellipse(aes(x=NMDS1, y=NMDS2, color = burned),type = "t", level = 0.95) +
   geom_point(aes(x=NMDS1, y=NMDS2, shape=FF, size= 4)) +
   scale_shape_manual(values = c(0:3), name = "Fire\nFrequency") +
@@ -349,8 +350,8 @@ ggplot(data=scores) +
         legend.background = element_rect(fill = 'transparent'))
 
 
-ggsave("figures/figure_3_nmds.pdf", limitsize = FALSE, width = 7, height = 6,
-       dpi=600)
+ggsave(p_nmds, filename = "figures/figure_3_nmds.png", limitsize = FALSE, width = 7, height = 6,
+       dpi=600, bg="white")
 
 # tukey plots ------------------------------------------------------------------
 SPs <- read.csv("Data/FF_All_plots.csv") %>%
@@ -469,7 +470,7 @@ evn <- gather(dplyr::select(s,-plot), key = Variable, value = Value, -FF) %>%
   mutate(Variable = lut1[Variable]) %>%
   arrange(Variable)
 
-ggplot(evn, aes(x = `Fire Frequency`, y = Value, fill = TukeyHSD)) +
+p_tuk <- ggplot(evn, aes(x = `Fire Frequency`, y = Value, fill = TukeyHSD)) +
   geom_boxplot() +
   facet_wrap(~Variable, scales = "free", dir = "h", nrow = 2) +
   theme_bw() +
@@ -480,7 +481,7 @@ ggplot(evn, aes(x = `Fire Frequency`, y = Value, fill = TukeyHSD)) +
   theme(panel.border = element_rect(fill = NA, colour = "black"))+
   ylab(NULL)
 
-ggsave("figures/figure_4_tukey_plots.pdf", limitsize = FALSE, width = 7, height = 5)
+ggsave(p_tuk, filename = "figures/figure_4_tukey_plots.png", limitsize = FALSE, width = 7, height = 5, bg="white")
 # functional group figure ------------------------------------------------------
 
 nbp = read.csv("Data/FF_plot_level.csv") %>%
@@ -502,7 +503,7 @@ nbp = read.csv("Data/FF_plot_level.csv") %>%
   rename("Fire Frequency" = FF)
 
 # colors are from RColorBrewer - brewer.pal(8, "Spectral")
-ggplot(data = nbp, aes(x = `Fire Frequency`, y = `Percent Cover`, 
+p_olf<- ggplot(data = nbp, aes(x = `Fire Frequency`, y = `Percent Cover`, 
                        fill = `Origin and Life Form`)) +
   geom_bar(stat = 'identity', color = 'black') +
   scale_fill_manual(values=c("#D53E4F", "#F46D43", "#FDAE61", "#FEE08B", 
@@ -514,8 +515,8 @@ ggplot(data = nbp, aes(x = `Fire Frequency`, y = `Percent Cover`,
         legend.justification = c(1,1),
         legend.background = element_rect(fill = "transparent", color = "black")) 
 
-ggsave("figures/figure_5_origin_lf.pdf", limitsize = FALSE,
-       width = 4, height = 7, dpi = 600)
+ggsave(p_olf, filename = "figures/figure_5_origin_lf.png", limitsize = FALSE,
+       width = 4, height = 7, dpi = 600, bg="white")
 
 
 
@@ -665,6 +666,7 @@ p0 <- ggplot(brte_ga, aes(x=BRTE, y=value, group=block)) +
   theme(panel.border = element_rect(fill = NA, colour = "black"))+
   theme(panel.background = element_rect(fill='white', colour='black')) + 
   ylab("Elevation-Adjusted Values") +
-  xlab("Cheatgrass Cover") +
-  ggsave("figures/figure_7_brte_div.pdf",width=6, height = 5, limitsize = FALSE)
+  xlab("Cheatgrass Cover")
+
+ggsave(p0,filename = "figures/figure_7_brte_div.png",width=6, height = 5, limitsize = FALSE, bg="white")
 
