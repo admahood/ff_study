@@ -9,15 +9,17 @@ output: slidy_presentation
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-# If you would like to follow along in R:
+# Data jam format
 
-clone this repo: https://github.com/admahood/ff_study
+* Applying a new techniqe to data from an old study
+* Feel free to give [it](https://doi.org/10.1002/ecs2.2591) a read! It's my master's thesis.
 
-i.e.
-
-`git clone https://github.com/admahood/ff_study.git`
-
-This presentation has all the code, is called `eds_talk.Rmd`
+* If you would like to follow along in R:
+  * clone this repo: https://github.com/admahood/ff_study
+  * In the command line:
+    * `git clone https://github.com/admahood/ff_study.git`
+  * This presentation has all the code
+    * it is called `eds_talk.Rmd` in the top directory
 
 # Then, install these packages (and load them):
 
@@ -31,16 +33,23 @@ require(snow)
 library(ggtext)
 library(knitr)
 library(kableExtra)
-library(ggpubr) # for ggarrange
+library(ggpubr) 
 ```
 
 I will begin with some background, so people who want to follow along will be able to get caught up on all that stuff
 
 # Cheatgrass, Sagebrush, Fires, oh my!
 
+- In Nevada, between the salt flats and the Pinyon-Juniper woodlands,
+  - there is sagebrush
+  - and, increasingly, it is being replaced by annual grasses
+- A diverse and fire history is masked by everything looking the same
+
 ![](figures/figure_1_fire_pics-1.png){ width=75% }
 
 They look the same but are they really the same?
+
+![](figures/fire_history.png)
 
 # Remote sensing based sampling design
 
@@ -64,7 +73,7 @@ They look the same but are they really the same?
 
 # Fires and diversity - multivariate analysis of community composition
 
-![](figures/figure_5_origin_lf.png){ width=75% }
+![](figures/figure_5_origin_lf.png){ width=25% }
 
 * what are we not seeing here?
   * Shrubs in FF1 & 2 are mostly rabbitbrush (*Ericameria spp*) instead of sagebrush
@@ -88,7 +97,13 @@ They look the same but are they really the same?
 
 # Heirarchical Modelling of Species Communities (HMSC)
 
-figure from HMSC
+![](figures/hmsc_structure.png)
+![](figures/hmsc_structure_1.png)
+
+For more information:
+
+* Tikhonov, Gleb, Øystein H. Opedal, Nerea Abrego, Aleksi Lehikoinen, Melinda M. J. Jonge, Jari Oksanen, and Otso Ovaskainen. “Joint Species Distribution Modelling with the r‐package H msc.” Edited by Nick Golding. Methods in Ecology and Evolution 11, no. 3 (March 2020): 442–47. https://doi.org/10.1111/2041-210X.13345.
+
 
 # Basic data input
 
@@ -180,7 +195,7 @@ XFormula <- ~ Elevation+
   LITTER +
   AUM_acre
 
-# insert traits here
+# insert traits and phylogeny here
 
 studyDesign <- data.frame(site = as.factor(XData$site))
 rL <- HmscRandomLevel(units = studyDesign$site)
@@ -196,16 +211,16 @@ mod = Hmsc(Y = Y, XData = XData, XFormula = XFormula, distr="probit",
 
 ```{r mcmc_setup}
 nChains = 2
-test.run = TRUE
+test.run = FALSE 
+
 if (test.run){
   #with this option, the vignette evaluates in ca. 1 minute in adam's laptop
   thin = 10
   samples = 100
   transient = ceiling(thin*samples*.5)
 }else{
-  # with a spatial random effect, evaluates in ---
-  # looks like a compute-optimized aws instance is called for, very little ram usage
-  thin = 100
+  # with a spatial random effect, evaluates in 20 minutes on adam's laptop
+  thin = 10
   samples = 1000
   transient = ceiling(thin*samples*.5)
 }
@@ -217,9 +232,9 @@ This stuff takes a long time! It's a really good idea to keep track of how long 
 
 ```{r mcmc_run}
 t0 <- Sys.time()
-# hmsc_file <- "Data/hmsc/hmsc_probit_test.Rda"
+hmsc_file <- "Data/hmsc/hmsc_probit_test.Rda"
 dir.create("Data/hmsc")
-# if(!file.exists(hmsc_file)){
+if(!file.exists(hmsc_file)){
   m = sampleMcmc(mod, thin = thin, 
                  samples = samples, 
                  transient = transient,
@@ -227,8 +242,8 @@ dir.create("Data/hmsc")
                  nChains = nChains, 
                  nParallel = nChains)
   print(Sys.time()-t0)
-#   save(m, file=hmsc_file)
-# }else{load(hmsc_file)}
+  save(m, file=hmsc_file)
+}else{load(hmsc_file)}
 ```
 
 
@@ -246,15 +261,8 @@ VP <- computeVariancePartitioning(m) # variance partitioning
 
 
 ```{r}
-psrf.V = gelman.diag(mpost$V,multivariate=FALSE)$psrf%>%
-  as_tibble() %>% dplyr::rename(psrf_v = `Point est.`)
-
-
 ess.beta <- effectiveSize(mpost$Beta) %>%
   as_tibble() %>% dplyr::rename(ess_beta = value)
-
-ess.v <- effectiveSize(mpost$V)%>%
-  as_tibble() %>% dplyr::rename(ess_v = value)
 psrf.beta <- gelman.diag(mpost$Beta, multivariate=FALSE)$psrf%>%
   as_tibble() %>% dplyr::rename(psrf_beta = `Point est.`)
 
@@ -271,9 +279,11 @@ ggsave(diag_all,filename = "figures/geldman_ess.pdf", width = 5.5, height=3.5, b
 diag_all
 ```
 
-ESS should be around 400, Gelman <1.001
+ESS should be around 2000, Gelman <1.001
 
 ![](figures/jsdm_stuff.png){ width=75% }
+
+# The explanatory power is directly related to prevalence
 
 ```{r}
 MF$TjurR2 %>% mean(na.rm=T)
@@ -293,6 +303,10 @@ ggarrange(
 
 
 # $R^2$ vs prevalence
+
+* Notice that the one species at *every* plot also gave the model a little trouble
+  * Not surprising give that the input data is just 0's and 1's
+  * so all 0's is essentially the same as all 1's
 
 
 ```{r}
@@ -338,8 +352,8 @@ vp_summary <- vp_df %>%
   ungroup() 
 
 vp_order <- vp_df %>%
-  filter(variable == "Random: site") %>%
-  arrange(prevalence) %>%
+  filter(variable == "FF") %>%
+  arrange(value) %>%
   mutate(Species_f = factor(Species, levels = .$Species)) %>%
   dplyr::select(Species, Species_f) 
 
@@ -356,13 +370,19 @@ vp_order <- vp_df %>%
 
 
 vp <- left_join(vp_df, vp_order) %>% 
+  mutate(variable = factor(variable, c( "Elevation",
+                                        "Random: site" ,
+                                        "folded_aspect",
+                                        "LITTER"  ,
+                                        "AUM_acre",
+                                        "FF" )))%>%
   ggplot(aes(x=value,y=Species_f, fill = variable)) +
   geom_bar(stat="identity")+
   theme_classic() +
   ylab("Species") +
   xlab("Proportion of Variance Explained") +
   scale_fill_brewer(palette = "Dark2")+
-  theme(legend.position = c(1,.315),
+  theme(legend.position = "right",
         legend.text = element_markdown(),
         legend.title = element_blank(),
         legend.justification = c(1,0),
@@ -416,6 +436,8 @@ plotBeta(m, post = postBeta, param = "Support",
          supportLevel = 0.95, split=.4, spNamesNumbers = c(T,F))
 
 ```
+
+
 
 # gradient visualization - Continuous variable
 
@@ -503,4 +525,47 @@ ff_native <- pred_df_ff %>%
 ggsave(ff_native, filename = "figures/gradient_ff.png", width = 20, height = 10)
 ff_native
 ```
+
+
+# Species co-occurrence
+
+```{r fig.height=10, fig.width=12}
+OmegaCor = computeAssociations(m)
+supportLevel = 0.89
+toPlot = ((OmegaCor[[1]]$support>supportLevel) + 
+            (OmegaCor[[1]]$support<(1-supportLevel))>0)*OmegaCor[[1]]$mean
+
+toPlot_p = ((OmegaCor[[1]]$support>supportLevel) + 
+            (OmegaCor[[1]]$support<(1-supportLevel))>0)*OmegaCor[[1]]$support
+
+hmdf_mean <- OmegaCor[[1]]$mean %>%
+  as.matrix
+hmdf_support <- OmegaCor[[1]]$support %>%
+  as.matrix
+
+omega_plot<- ggcorrplot::ggcorrplot(hmdf_mean, type = "lower",
+                              hc.order = TRUE, title = "Occurrence")
+ggsave(omega_plot,
+       filename="figures/species_associations.png",
+       bg="white", width=18, height = 18)
+
+omega_plot
+```
+
+# Recap
+
+- JSDMs are a cool new method
+  - many different approaches
+  - new approaches and software are coming out all the time
+- Applied a MCMC-based JSDM to a study on fire frequency and biodiversity
+  - Used a probit model on the occurrence matrix
+  - Examined
+    - Model convergence diagnositcs
+    - Model fit: $R^2$ dependent on prevalence
+    - Variance partitioning
+    - Beta coefficients (filters)
+    - Gradient predictions 
+    - Residual correlations among species
+
+<center> **Thank you!** </center>
 
